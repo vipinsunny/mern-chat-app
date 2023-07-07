@@ -167,12 +167,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           px={2}
           w="100%"
           fontFamily="Work sans"
-          d="flex"
+          display="flex"
           justifyContent={{ base: "space-between" }}
           alignItems="center"
         >
           <IconButton
-            d={{ base: "flex", md: "none" }}
+            display={{ base: "flex", md: "none" }}
             icon={<ArrowBackIcon />}
             onClick={() => setSelectedChat("")}
           />
@@ -180,9 +180,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             (!selectedChat.isGroupChat ? (
               <>
                 {getSender(user, selectedChat.users)}
-                <ProfileModal
-                  user={getSenderFull(user, selectedChat.users)}
-                />
+                <ProfileModal user={getSenderFull(user, selectedChat.users)} />
               </>
             ) : (
               <>
@@ -196,7 +194,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             ))}
         </Text>
         <Box
-          d="flex"
+          display="flex"
           flexDir="column"
           justifyContent="flex-end"
           p={3}
@@ -207,20 +205,19 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           overflowY="hidden"
         >
           {loading ? (
-            <Spinner
-              size="xl"
-              w={20}
-              h={20}
-              alignSelf="center"
-              margin="auto"
-            />
+            <Spinner size="xl" w={20} h={20} alignSelf="center" margin="auto" />
           ) : (
             <div className="messages">
               <ScrollableChat messages={messages} />
             </div>
           )}
 
-          <FormControl onKeyDown={sendMessage} id="first-name" isRequired mt={3}>
+          <FormControl
+            onKeyDown={sendMessage}
+            id="first-name"
+            isRequired
+            mt={3}
+          >
             {istyping ? (
               <div>
                 {/* <Lottie
@@ -246,7 +243,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     );
   } else {
     return (
-      <Box d="flex" alignItems="center" justifyContent="center" h="100%">
+      <Box display="flex" alignItems="center" justifyContent="center" h="100%">
         <Text fontSize="3xl" pb={3} fontFamily="Work sans">
           Click on a user to start chatting
         </Text>
