@@ -1,0 +1,9 @@
+# render.yaml
+
+services:
+  - name: mern-chat-app
+    buildCommand: cd frontend && npm install && npm run build
+    publishDir: frontend/build
+    startCommand: node server/server.js
+    env:
+      NODE_ENV: production
