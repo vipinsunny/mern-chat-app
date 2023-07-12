@@ -101,10 +101,13 @@ const Signup = () => {
     const data = new FormData();
     data.append("file", pics);
     data.append("upload_preset", "chat-app");
-    data.append("cloud_name", "ddilhoqwf");
-    fetch("https://api.cloudinary.com/v1_1/ddilhoqwf", {
+    // data.append("cloud_name", "ddilhoqwf");
+    fetch("https://mern-chat-app-vipin.onrender.com/image.jpeg", {
       method: "post",
       body: data,
+      headers: {
+        "Cloud-Name": "ddilhoqwf",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
