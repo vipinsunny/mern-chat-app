@@ -40,7 +40,7 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "/api/user/login",
+        "https://mern-chat-app-vipin.onrender.com/api/user/login",
         { email, password },
         config
       );
@@ -55,7 +55,7 @@ const Login = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      history.push("/chats");
+      history.push("https://mern-chat-app-vipin.onrender.com/chats");
     } catch (error) {
       toast({
         title: "Error Occured!",
