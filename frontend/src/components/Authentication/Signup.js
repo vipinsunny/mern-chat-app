@@ -121,8 +121,6 @@ if (pics.type === "image/jpeg" || pics.type === "image/png") {
       console.log(err);
       setPicLoading(false);
     });
-}
-
     } else {
       toast({
         title: "Please Select an Image!",
