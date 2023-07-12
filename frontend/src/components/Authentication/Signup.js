@@ -98,24 +98,27 @@ const Signup = () => {
     }
     console.log(pics);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
-      const data = new FormData();
-      data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "ddilhoqwf");
-      fetch("https://api.cloudinary.com/v1_1/ddilhoqwf", {
-        method: "post",
-        body: data,
+    const data = new FormData();
+    data.append("file", pics);
+    data.append("upload_preset", "chat-app");
+    data.append("cloud_name", "ddilhoqwf");
+    fetch("https://api.cloudinary.com/v1_1/ddilhoqwf", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const websiteUrl =
+          "https://mern-chat-app-vipin.onrender.com/image.jpeg";
+        setPic(websiteUrl);
+        console.log(websiteUrl);
+        setPicLoading(false);
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setPic(data.url.toString());
-          console.log(data.url.toString());
-          setPicLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setPicLoading(false);
-        });
+      .catch((err) => {
+        console.log(err);
+        setPicLoading(false);
+      });
+
     } else {
       toast({
         title: "Please Select an Image!",
