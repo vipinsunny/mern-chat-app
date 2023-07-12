@@ -97,30 +97,31 @@ const Signup = () => {
       return;
     }
     console.log(pics);
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
-    const data = new FormData();
-    data.append("file", pics);
-    data.append("upload_preset", "chat-app");
-    // data.append("cloud_name", "ddilhoqwf");
-    fetch("https://mern-chat-app-vipin.onrender.com/image.jpeg", {
+if (pics.type === "image/jpeg" || pics.type === "image/png") {
+  const data = new FormData();
+  data.append("file", pics);
+  data.append("upload_preset", "chat-app");
+  data.append("Cloud-Name", "YOUR_CLOUD_NAME");
+  fetch(
+    "https://mern-chat-app-vipin.onrender.com/" + pics.type,
+    {
       method: "post",
       body: data,
       headers: {
-        "Cloud-Name": "ddilhoqwf",
+        "Cloud-Name": "YOUR_CLOUD_NAME",
       },
+    },
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      
+      setPicLoading(false);
     })
-      .then((res) => res.json())
-      .then((data) => {
-        const websiteUrl =
-          "https://mern-chat-app-vipin.onrender.com/image.jpeg";
-        setPic(websiteUrl);
-        console.log(websiteUrl);
-        setPicLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setPicLoading(false);
-      });
+    .catch((err) => {
+      console.log(err);
+      setPicLoading(false);
+    });
+}
 
     } else {
       toast({
